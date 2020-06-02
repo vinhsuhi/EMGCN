@@ -3,10 +3,10 @@ Code of the paper: ***Entity Alignment for Knowledge Graphs with Multi-order Con
 
 # Environment
 
-* python>=3.5 \
-* networkx == 1.11 (**important!**) \
-* pytorch >= 1.2.0 \
-* numpy >= 1.18.1 \
+* python>=3.5 
+* networkx == 1.11 (**important!**) 
+* pytorch >= 1.2.0 
+* numpy >= 1.18.1 
 
 # Running
 
