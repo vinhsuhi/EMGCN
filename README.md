@@ -11,7 +11,7 @@ Code of the paper: ***Entity Alignment for Knowledge Graphs with Multi-order Con
 # Running
 
 ```
-python -u network_alignment.py --dataset_name zh_en --source_dataset data/networkx/zh_enID/zh/graphsage/ --target_dataset data/networkx/zh_enID/en/graphsage --groundtruth data/networkx/zh_enID/dictionaries/groundtruth EMGCN --sparse --log 
+python -u network_alignment.py --dataset_name zh_en --source_dataset data/networkx/zh_enDI/zh/graphsage/ --target_dataset data/networkx/zh_enDI/en/graphsage --groundtruth data/networkx/zh_enDI/dictionaries/groundtruth EMGCN --sparse --log 
 ```
 
 # Dataset
