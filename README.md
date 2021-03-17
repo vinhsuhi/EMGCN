@@ -1,5 +1,5 @@
 # EMGCN
-Code of the paper: ***Entity Alignment for Knowledge Graphs with Multi-order Convolutional Network***.
+Code of the paper: ***Multi-order Graph Convolutional Networks for Knowledge Graph Alignment***.
 
 # Environment
 
@@ -21,4 +21,4 @@ You can download our processed dataset from: https://drive.google.com/file/d/12X
 
 Please politely cite our work as follows:
 
-*Nguyen Thanh Tam, Huynh Thanh Trung, Hongzhi Yin, Tong Van Vinh, Darnbi Sakong, Bolong Zheng, Nguyen Quoc Viet Hung. Entity Alignment for Knowledge Graphs with Multi-order Convolutional Network. In: TKDE 2020.*
+*Nguyen Thanh Tam, Huynh Thanh Trung, Hongzhi Yin, Tong Van Vinh, Darnbi Sakong, Bolong Zheng, Nguyen Quoc Viet Hung. Multi-order Graph Convolutional Networks for Knowledge Graph . In: TKDE 2020.*
