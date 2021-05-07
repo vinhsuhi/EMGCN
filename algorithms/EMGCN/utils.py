@@ -53,7 +53,7 @@ def cv_coo_sparse(coo):
 def get_acc(source_outputs, target_outputs, alphas=None, att_simi=None, value_simi=None, alpha_att_val=[1, 0.5, 0.5], test_dict=None):
     Sf = np.zeros((len(source_outputs[0]), len(target_outputs[0])))
     alphas = np.array(alphas)
-    alphas /= alphas.sum()
+    alphas = alphas / alphas.sum()
     accs = ""
     for i in range(0, len(source_outputs)):
         S = torch.matmul(F.normalize(source_outputs[i]), F.normalize(target_outputs[i]).t())
