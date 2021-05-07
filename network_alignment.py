@@ -41,6 +41,9 @@ def parse_args():
     parser_EMGCN.add_argument('--rel', type=float, default=1)
     parser_EMGCN.add_argument('--att', type=float, default=0.5)
     parser_EMGCN.add_argument('--attval', type=float, default=0.5) # what is this
+    # often change
+    parser_EMGCN.add_argument('--num_each_refine', type=int, default=100)
+
     return parser.parse_args()
 
 
