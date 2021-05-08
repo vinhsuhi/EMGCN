@@ -36,11 +36,11 @@ def parse_args():
 
     # often change
     parser_EMGCN.add_argument('--refinement_epochs', default=10, type=int)
-    parser_EMGCN.add_argument('--threshold_refine', type=float, default=0.8, help="The threshold value to get stable candidates")
-    parser_EMGCN.add_argument('--point', type=float, default=1.1)
+    parser_EMGCN.add_argument('--threshold_refine', type=float, default=0.94, help="The threshold value to get stable candidates")
+    parser_EMGCN.add_argument('--point', type=float, default=1.01)
     parser_EMGCN.add_argument('--rel', type=float, default=1)
-    parser_EMGCN.add_argument('--att', type=float, default=0.5)
-    parser_EMGCN.add_argument('--attval', type=float, default=0.5) # what is this
+    parser_EMGCN.add_argument('--att', type=float, default=0.25)
+    parser_EMGCN.add_argument('--attval', type=float, default=0.25) # what is this
     # often change
     parser_EMGCN.add_argument('--num_each_refine', type=int, default=100)
 
