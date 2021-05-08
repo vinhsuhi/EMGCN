@@ -148,7 +148,7 @@ class EMGCN(NetworkAlignmentModel):
 
     def get_candidate(self, source_outputs, target_outputs, num_stable):
         List_S = get_similarity_matrices(source_outputs, target_outputs)
-        List_S_2 = [self.att_simi_matrix, self.value_simi_matrix]
+        #List_S_2 = [self.att_simi_matrix, self.value_simi_matrix]
 
         source_candidates = []
         target_candidates = []
@@ -197,6 +197,7 @@ class EMGCN(NetworkAlignmentModel):
         source_outputs = embedding_model(source_A_hat, 's')
         target_outputs = embedding_model(target_A_hat, 't')
         acc, self.S, _ = get_acc(source_outputs, target_outputs, self.alphas)
+        print("ACC: ".format(acc))
 
         dictt = get_dict_from_S(self.S, self.source_dataset.id2idx, self.target_dataset.id2idx)
         score = self.score(dictt)
@@ -214,6 +215,7 @@ class EMGCN(NetworkAlignmentModel):
             target_outputs = embedding_model(X, 't')
 
             acc, S, _ = get_acc(source_outputs, target_outputs, self.alphas)
+            print(acc)
             score = np.max(S, axis=1).mean()
             dictt = get_dict_from_S(S, self.source_dataset.id2idx, self.target_dataset.id2idx)
             score = self.score(dictt)
@@ -221,7 +223,9 @@ class EMGCN(NetworkAlignmentModel):
                 score_max = score
                 self.S = S
 
-        self.S = self.alpha_att_val[0] * self.S + self.alpha_att_val[1] * att_simi_matrix[0] * self.alpha_att_val[2] * att_simi_matrix[1]
+        self.S = self.alpha_att_val[0] * self.S + self.alpha_att_val[1] * att_simi_matrix
+
+
         return self.S
 
 
@@ -247,11 +251,12 @@ class EMGCN(NetworkAlignmentModel):
         print("Done structural training")
 
         embedding_model.eval()
-        self.att_simi_matrix, self.value_simi_matrix = self.get_simi_att()
+        
         att_simi_matrix = self.att_simi_matrix + self.value_simi_matrix
         source_A_hat = source_A_hat.to_dense()
         target_A_hat = target_A_hat.to_dense()
         # refinement
+
         self.refine(embedding_model, refinement_model, source_A_hat, target_A_hat, att_simi_matrix)            
 
 
