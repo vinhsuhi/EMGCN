@@ -192,7 +192,7 @@ class EMGCN(NetworkAlignmentModel):
         return torch.LongTensor(source_candidates), torch.LongTensor(target_candidates)
 
 
-    def refine(self, embedding_model, refinement_model, source_A_hat, target_A_hat, att_simi_matrix):
+    def refine(self, embedding_model, refinement_model, source_A_hat, target_A_hat, att_value_simi_matrix):
         # INIT BEFORE LOOP
         source_outputs = embedding_model(source_A_hat, 's')
         target_outputs = embedding_model(target_A_hat, 't')
@@ -223,7 +223,7 @@ class EMGCN(NetworkAlignmentModel):
                 score_max = score
                 self.S = S
 
-        self.S = self.alpha_att_val[0] * self.S + self.alpha_att_val[1] * att_simi_matrix
+        self.S = self.alpha_att_val[0] * self.S + self.alpha_att_val[1] * att_value_simi_matrix
 
 
         return self.S
@@ -251,13 +251,13 @@ class EMGCN(NetworkAlignmentModel):
         print("Done structural training")
 
         embedding_model.eval()
-        
-        att_simi_matrix = self.att_simi_matrix + self.value_simi_matrix
+        self.att_simi_matrix, self.value_simi_matrix = self.get_simi_att()
+        att_value_simi_matrix = self.att_simi_matrix + self.value_simi_matrix
         source_A_hat = source_A_hat.to_dense()
         target_A_hat = target_A_hat.to_dense()
         # refinement
 
-        self.refine(embedding_model, refinement_model, source_A_hat, target_A_hat, att_simi_matrix)            
+        self.refine(embedding_model, refinement_model, source_A_hat, target_A_hat, att_value_simi_matrix)            
 
 
     def align(self):
